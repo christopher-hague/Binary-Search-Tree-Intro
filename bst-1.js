@@ -58,4 +58,67 @@ class BinarySearchTree {
       }
     }
   }
+
+  minNode() {
+    // starting at the root of the BST...
+    var currentNode = this.root
+
+    // as long as the currentNode has value
+    while(currentNode) {
+      // if the currentNode has a .left property, set currentNode to currentNode.left
+      if(currentNode.left) {
+        currentNode = currentNode.left
+      } else { // else return currentNode, as we have found the node with the minimum value
+        return currentNode
+      }
+    }
+  }
+
+  maxNode() {
+    // starting at the root of the BST...
+    var currentNode = this.root
+
+    // while the currentNode has value
+    while(currentNode) {
+      // if the currentNode has a .right property, set currentNode to currentNode.right
+      if(currentNode.right) {
+        currentNode = currentNode.right
+      } else { // else return currentNode, as we have found the node with the maximum value
+        return currentNode
+      }
+    }
+  }
+
+  findNode(val) {
+    // starting at the root of the BST
+    var currentNode = this.root
+
+    // while currentNode has has value
+    while(currentNode) {
+      // return currentNode.value if currentNode.value === value
+      if(val === currentNode.value) {
+        return currentNode
+      } else if(val < currentNode.value) {
+        // return currentNode.left if currentNode.left && value is less than currentNode.value
+        if(currentNode.left) {
+          currentNode = currentNode.left
+        } else {
+          return null
+        }
+      } else if(val > currentNode.value) {
+        // return currentNode.right if currentNode.right && value is greater than currentNode.value
+        if(currentNode.right) {
+          currentNode = currentNode.right
+        } else {
+          return null
+        }
+      }
+    }
+  }
+
+  hasValue(val) {
+    // this.findNode(value) !== null
+    return !!this.findNode(val)
+  }
+
 }
